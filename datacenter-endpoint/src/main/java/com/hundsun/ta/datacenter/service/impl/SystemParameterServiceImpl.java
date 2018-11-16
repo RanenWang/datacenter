@@ -6,6 +6,8 @@ package com.hundsun.ta.datacenter.service.impl;
 
 import com.hundsun.ta.datacenter.daointerface.SystemParameterDOMapper;
 import com.hundsun.ta.datacenter.dataobject.SystemParameterDO;
+import com.hundsun.ta.datacenter.enums.SystemParamterClassEnum;
+import com.hundsun.ta.datacenter.enums.SystemParamterItemEnum;
 import com.hundsun.ta.datacenter.service.SystemParameterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,14 +47,35 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 
     @Override public String getNavPath(String path, String name, String date) {
         SystemParameterDO systemParameterRequest = new SystemParameterDO();
-        //systemParameterRequest.setClassName(Sys);
-        //systemParameterRequest.setItem();
-
-        return null;
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PATH.getCode());
+        systemParameterRequest.setItem(path);
+        List<SystemParameterDO> systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        String filePath = systemParameterDOSList.get(0).getParamValue();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(name);
+        systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        filePath += systemParameterDOSList.get(0).getParamValue();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(date);
+        systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        filePath += systemParameterDOSList.get(0).getParamValue();
+        return filePath;
     }
 
     @Override public String getNavRestPath(String path, String name, String date) {
-        return null;
-    }
+        SystemParameterDO systemParameterRequest = new SystemParameterDO();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PATH.getCode());
+        systemParameterRequest.setItem(path);
+        List<SystemParameterDO> systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        String filePath = systemParameterDOSList.get(0).getParamValue();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(name);
+        systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        filePath += systemParameterDOSList.get(0).getParamValue();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(date);
+        systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        filePath += systemParameterDOSList.get(0).getParamValue();
+        return filePath;    }
 
 }
