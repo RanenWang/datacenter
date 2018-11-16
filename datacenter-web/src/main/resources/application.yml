@@ -1,5 +1,5 @@
 server:
-  port: 10000
+  port: 9999
 
 spring:
   datasource:
@@ -11,7 +11,7 @@ spring:
 
 
 mybatis:
-  mapper-locations: classpath:dao/auto/*Mapper.xml
+  mapper-locations: classpath:dao/*Mapper.xml
   type-aliases-package: com.hundsun.ta.datacenter.daointerface
 
 debug: false

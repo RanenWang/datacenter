@@ -12,6 +12,7 @@ package com.hundsun.ta.datacenter.enums;
 import com.alibaba.common.lang.StringUtil;
 
 public enum SystemParamterClassEnum {
+    PARAMTER("PARAMTER","系统参数"),
     PATH("PATH", "路径配置"),
     VERSION("VERSION", "版本配置");
 
