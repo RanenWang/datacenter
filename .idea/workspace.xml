@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acb6d9d0-43ae-4c8d-846c-b4d0975c8b87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/NavSplitFundService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/impl/NavSplitFundServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datacenter-endpoint/src/main/java/com/hundsun/ta/datacenter/controller/NavSplitFundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-dal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-dal/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-dal/src/main/resources/dao/auto/SystemParameterDOMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-dal/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-dal/src/main/resources/generatorConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-endpoint/src/main/java/com/hundsun/ta/datacenter/SystemParamterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-endpoint/src/main/java/com/hundsun/ta/datacenter/controller/SystemParamterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-endpoint/src/main/java/com/hundsun/ta/datacenter/enums/SystemParamterClassEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-endpoint/src/main/java/com/hundsun/ta/datacenter/enums/SystemParamterClassEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter-web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-web/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/impl/NavSplitFundServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/impl/NavSplitFundServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/datacenter-dal/target/" />
@@ -34,7 +25,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
-          <entry key="java" value="36" />
+          <entry key="java" value="37" />
           <entry key="md" value="1" />
           <entry key="xml" value="16" />
           <entry key="yml" value="3" />
@@ -43,7 +34,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="5" />
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="37" />
           <entry key="Markdown" value="1" />
           <entry key="XML" value="16" />
           <entry key="YAML" value="3" />
@@ -68,6 +59,11 @@
           <entry key="YAML" value="33" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
@@ -81,15 +77,6 @@
                 <element signature="e#1982#1983#0" expanded="true" />
                 <element signature="e#2040#2041#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/datacenter-web/src/main/java/com/hundsun/ta/datacenter/DatacenterWebApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="1" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -130,11 +117,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/daointerface/NavSplitFundDOMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="345">
+              <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/NavSplitFundService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="19" column="20" selection-start-line="19" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,6 +184,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -647,27 +651,26 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542351766419</updated>
-      <workItem from="1542351767725" duration="8738000" />
+      <workItem from="1542351767725" duration="9221000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8738000" />
+    <option name="totallyTimeSpent" value="9221000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="UI Designer" order="0" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.21306472" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.21306472" />
       <window_info id="Structure" order="4" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="LinkE" order="1" />
       <window_info anchor="bottom" id="Spring" order="2" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32959184" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.32959184" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Tala" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32959184" />
@@ -866,16 +869,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/NavSplitFundService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="20" selection-start-line="19" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datacenter-web/src/main/java/com/hundsun/ta/datacenter/DatacenterWebApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -952,8 +945,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/daointerface/NavSplitFundDOMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="345">
+          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datacenter-dal/src/main/java/com/hundsun/ta/datacenter/service/NavSplitFundService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="20" selection-start-line="19" selection-end-line="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
