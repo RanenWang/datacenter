@@ -53,6 +53,12 @@
             <artifactId>toolkit-common-lang</artifactId>
             <version>1.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.alipay.rdf.file</groupId>
+            <artifactId>rdf-file-core</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+      
 
     </dependencies>
 
