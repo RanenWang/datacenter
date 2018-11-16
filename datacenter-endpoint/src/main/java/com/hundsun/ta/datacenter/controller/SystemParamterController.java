@@ -52,8 +52,7 @@ public class SystemParamterController{
     public String updateByClassAndItem(@RequestParam("class")String sysclass,@RequestParam("item") String sysitem,@RequestParam("value") String sysvalue){
 
         SystemParameterDO systemParameterDO = new SystemParameterDO();
-        systemParameterDO.setId(1);
-        systemParameterDO.setClassName(sysitem);
+        systemParameterDO.setClassName(sysclass);
         systemParameterDO.setItem(sysitem);
         systemParameterDO.setParamValue(sysvalue);
         systemParameterService.updateByClassAndItem(systemParameterDO);

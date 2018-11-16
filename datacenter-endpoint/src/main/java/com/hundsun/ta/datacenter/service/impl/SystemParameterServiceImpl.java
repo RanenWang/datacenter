@@ -10,6 +10,8 @@ import com.hundsun.ta.datacenter.service.SystemParameterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author wangpeng17355
  * @version $Id: SystemParameterService, v0.1 2018年11月15日 5:26 PM wangpeng17355 Exp $
@@ -32,6 +34,25 @@ public class SystemParameterServiceImpl implements SystemParameterService {
     @Override public int updateByClassAndItem(SystemParameterDO systemParameterDO) {
         systemParameterDOMapper.updateByClassAndItem(systemParameterDO);
         return 0;
+    }
+
+    @Override public List<SystemParameterDO> selectByClassAndItem(
+            SystemParameterDO systemParameterDO) {
+
+       return systemParameterDOMapper.selectByClassAndItem(systemParameterDO);
+
+    }
+
+    @Override public String getNavPath(String path, String name, String date) {
+        SystemParameterDO systemParameterRequest = new SystemParameterDO();
+        //systemParameterRequest.setClassName(Sys);
+        //systemParameterRequest.setItem();
+
+        return null;
+    }
+
+    @Override public String getNavRestPath(String path, String name, String date) {
+        return null;
     }
 
 }

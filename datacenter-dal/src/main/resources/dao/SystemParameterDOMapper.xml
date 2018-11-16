@@ -209,8 +209,7 @@
 
   <update id="updateByClassAndItem" parameterType="com.hundsun.ta.datacenter.dataobject.SystemParameterDO">
       update system_parameter
-    set class_name = #{className,jdbcType=VARCHAR},
-      item = #{item,jdbcType=VARCHAR},
+    set
       param_value = #{paramValue,jdbcType=VARCHAR},
       user_modify = #{userModify,jdbcType=CHAR},
       param_describe = #{paramDescribe,jdbcType=VARCHAR},
@@ -220,7 +219,14 @@
       show_sub_class = #{showSubClass,jdbcType=VARCHAR},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
     where class_name = #{className,jdbcType=VARCHAR}
-      and
-      item = #{item,jdbcType=VARCHAR}
+      and item = #{item,jdbcType=VARCHAR}
   </update>
+
+  <select  id="selectByClassAndItem" parameterType="com.hundsun.ta.datacenter.dataobject.SystemParameterDO" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from system_parameter
+    where  class_name = #{className,jdbcType=VARCHAR}
+    and item = #{item,jdbcType=VARCHAR}
+  </select>
 </mapper>

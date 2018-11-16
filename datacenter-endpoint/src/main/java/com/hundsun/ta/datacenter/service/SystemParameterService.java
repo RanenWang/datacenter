@@ -22,4 +22,29 @@ public interface SystemParameterService {
      * @return
      */
     int updateByClassAndItem(SystemParameterDO systemParameterDO);
+
+    /**
+     * 根据class和item筛选数据
+     * @param systemParameterDO
+     * @return
+     */
+    List<SystemParameterDO> selectByClassAndItem(SystemParameterDO systemParameterDO);
+
+    /**
+     * 获取nav文件路径
+     * @param path
+     * @param name
+     * @param date
+     * @return
+     */
+    String getNavPath(String path,String name,String date);
+    /**
+     * 获取navRest文件路径
+     * @param path
+     * @param name
+     * @param date
+     * @return
+     */
+    String getNavRestPath(String path,String name,String date);
+
 }
