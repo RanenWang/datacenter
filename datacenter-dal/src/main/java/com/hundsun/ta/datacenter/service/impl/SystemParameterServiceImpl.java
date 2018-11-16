@@ -29,4 +29,9 @@ public class SystemParameterServiceImpl implements SystemParameterService {
 
     }
 
+    @Override public int updateByClassAndItem(SystemParameterDO systemParameterDO) {
+        systemParameterDOMapper.updateByClassAndItem(systemParameterDO);
+        return 0;
+    }
+
 }

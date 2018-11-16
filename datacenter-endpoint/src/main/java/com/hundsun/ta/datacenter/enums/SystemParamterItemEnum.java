@@ -12,7 +12,8 @@ package com.hundsun.ta.datacenter.enums;
 import com.alibaba.common.lang.StringUtil;
 
 public enum SystemParamterItemEnum {
-    TACODE("TACODE", "TA代码");
+    TACODE("TACODE", "TA代码"),
+    NAVPATH("NAVPATH","行情路径");
 
     String code;
     String desc;

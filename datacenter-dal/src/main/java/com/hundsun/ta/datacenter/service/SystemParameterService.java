@@ -15,4 +15,11 @@ import java.util.List;
 public interface SystemParameterService {
 
     SystemParameterDO selectByPrimaryKey(int id);
+
+    /**
+     * 更新系统参数
+     * @param systemParameterDO
+     * @return
+     */
+    int updateByClassAndItem(SystemParameterDO systemParameterDO);
 }
