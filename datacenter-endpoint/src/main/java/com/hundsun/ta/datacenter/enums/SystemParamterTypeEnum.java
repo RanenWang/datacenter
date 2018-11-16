@@ -11,6 +11,7 @@ import com.alibaba.common.lang.StringUtil;
  * @version $Id: SystemParamterTypeEnum, v0.1 2018年11月15日 10:24 PM wangpeng17355 Exp $
  */
 public enum SystemParamterTypeEnum {
+
     TEXT("0", "文本框"),
     SINGLE("1", "下拉框单选"),
     MULTI("2", "下拉框多选");
