@@ -1,0 +1,18 @@
+server:
+  port: 8088
+
+spring:
+  datasource:
+    name: datacenter
+    url: jdbc:mysql://127.0.0.1:3306/tadatacenter
+    username: root
+    password: 11111111
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+mybatis:
+  mapper-locations: classpath:dao/auto/*Mapper.xml
+  type-aliases-package: com.hundsun.ta.datacenter.daointerface
+
+
+debug: false
