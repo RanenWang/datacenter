@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
 package com.hundsun.ta.datacenter.controller;
 
 /**
@@ -52,9 +48,10 @@ public class NavSplit {
         new BufferedReader(new InputStreamReader(new FileInputStream(file),"GBK"));
         // TODO: 2018/11/17 step2: 获取拆分表数据 nav_split_fund
         // TODO: 2018/11/17 step3: 获取是否三系统拆分标记
-        // TODO: 2018/11/17 step4: 获取分TA基金列表
+        // TODO: 2018/11/17 step4: 连接获取分TA基金列表
         // TODO: 2018/11/17 step5: 获取TA4基金列表
         // TODO: 2018/11/17 step6: 获取实时TA基金列表
+        // TODO: 2018/11/17
 
 
         String line = br.readLine();
@@ -62,7 +59,8 @@ public class NavSplit {
         while (line!=null){
             result += line+ "\n";
 
-            // TODO: 2018/11/17  拆分处理 
+            // TODO: 2018/11/17 拆分处理
+            // TODO: 2018/11/17 获取
             line = br.readLine();
             
 

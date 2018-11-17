@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
 package com.hundsun.ta.datacenter.service.impl;
 
 import com.hundsun.ta.datacenter.daointerface.NavSplitFundDOMapper;
