@@ -44,4 +44,10 @@ public interface SystemParameterService {
      */
     String getNavRestPath(String path,String name,String date);
 
+    /**
+     * 获取系统拆分参数
+     * @return
+     */
+    String getSplitType();
+
 }

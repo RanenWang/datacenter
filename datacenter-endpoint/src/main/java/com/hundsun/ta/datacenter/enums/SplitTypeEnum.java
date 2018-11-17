@@ -12,7 +12,16 @@ public enum SplitTypeEnum {
     TA4ANDYJTA("2","TA4ANDYJTA","自建和瑜伽TA拆分"),
     TA4ANDRTTA("3","TA4ANDRTTA","自建和实时TA拆分"),
     ETFANDTA4ANDYJTA("4","ETFANDTA4ANDYJTA","三系统拆分");
-
+    /**
+     * 7aXYin5fDvM45aKzG7YcTA==
+     * ETFANDTA4
+     * 7vDw0b21bqrcSgjz/TKEpQ==
+     * TA4ANDYJTA
+     * hZgonXeVDCDcSgjz/TKEpQ==
+     * TA4ANDRTTA
+     * 7aXYin5fDvPgnLUDhMR3d4wth5um40JJ
+     * ETFANDTA4ANDYJTA
+     */
     String code;
     String describ;
     String name;

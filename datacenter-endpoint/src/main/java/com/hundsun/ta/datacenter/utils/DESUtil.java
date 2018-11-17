@@ -24,19 +24,6 @@ public class DESUtil {
      */
     private final static String defaultKey = "datacenter";
 
-    public static void main(String[] args) throws Exception {
-        String data = "1";
-        /**
-         * 加密
-         */
-        System.out.println(encrypt(data));
-        /**
-         * 解密
-         */
-        System.out.println(decrypt(encrypt(data)));
-
-    }
-
     /**
      * 使用默认key加密
      * @param data
@@ -57,8 +44,10 @@ public class DESUtil {
      * @throws Exception
      */
     public static String decrypt(String data) throws IOException, Exception {
-        if (data == null)
-            return null;
+        if (data == null){
+            String o = null;
+            return o;
+        }
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] buf = decoder.decodeBuffer(data);
         byte[] bt = decrypt(buf, defaultKey.getBytes(ENCODE));

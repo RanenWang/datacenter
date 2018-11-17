@@ -74,4 +74,16 @@ public class SystemParameterServiceImpl implements SystemParameterService {
         filePath += systemParameterDOSList.get(0).getParamValue();
         return filePath;    }
 
+    /**
+     * 获取拆分类型
+     * @return
+     */
+    @Override public String getSplitType() {
+        SystemParameterDO systemParameterRequest = new SystemParameterDO();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(SystemParamterItemEnum.SPLITTYPE.getCode());
+        List<SystemParameterDO> systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        return systemParameterDOSList.get(0).getParamValue();
+    }
+
 }
