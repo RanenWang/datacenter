@@ -3,43 +3,80 @@
  */
 package com.hundsun.ta.datacenter.utils;
 
+import com.hundsun.ta.datacenter.daointerface.DatabaseConfigDOMapper;
+import com.hundsun.ta.datacenter.daointerface.SystemParameterDOMapper;
+import com.hundsun.ta.datacenter.dataobject.DatabaseConfigDO;
+import com.sun.org.apache.xml.internal.security.Init;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
 import java.security.PublicKey;
+import java.util.List;
 import java.util.Properties;
 
 /**
  * @author wangpeng17355
  * @version $Id: DBProperties, v0.1 2018年11月17日 2:57 PM wangpeng17355 Exp $
  */
+@Component
 public class DBProperties {
-    public Properties ETF;
-    public Properties TA4;
-    public Properties RTTA;
-    public Properties DATACENTER;
+    @Autowired
+    private DatabaseConfigDOMapper databaseConfigDOMapper;
 
-    public DBProperties()
-    {
+    public static Properties       ETF;
+    public static Properties       TA4;
+    public static Properties       RTTA;
+    public static Properties       DATACENTER;
+    public static final String ETF_TYPE = "ETF";
+    public static final String TA4_TYPE = "TA4";
+    public static final String RTTA_TYPE = "RTTA";
+    public static final String DATACENTER_TYPE = "DATACENTER";
+
+    public DBProperties() {
         this.ETF = new Properties();
         this.TA4 = new Properties();
         this.RTTA = new Properties();
         this.DATACENTER = new Properties();
-
     }
-//
-//
-//    static{
-//
-//        MG01 = new Properties();
-//        MG01.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-//        MG01.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg01");
-//        MG01.setProperty("jdbc.user", "xxx");
-//        MG01.setProperty("jdbc.password", "xxx");
-//
-//        CS15 = new Properties();
-//        CS15.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-//        CS15.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg15");
-//        CS15.setProperty("jdbc.user", "xxx");
-//        CS15.setProperty("jdbc.password", "xxx");
-//    }
+
+    /**
+     * 初始化数据库配置信息
+     * @return
+     */
+    public int InitProperties(){
+        //读取全部数据
+        List<DatabaseConfigDO> databaseConfigDOSList = databaseConfigDOMapper.selectAllData();
+        for(DatabaseConfigDO databaseConfigDO : databaseConfigDOSList){
+            if (databaseConfigDO.getSystemType().equals(ETF_TYPE)){
+
+            }else if(databaseConfigDO.getSystemType().equals(TA4_TYPE)) {
+
+            }else if(databaseConfigDO.getSystemType().equals(RTTA_TYPE)) {
+
+            }else if(databaseConfigDO.getSystemType().equals(DATACENTER_TYPE)) {
+
+            }else{
+                Throwable throwable = new Throwable("未知系统类型");
+            }
+        }
+        return 0;
+    }
+
+    //    static{
+    //
+    //        MG01 = new Properties();
+    //        MG01.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+    //        MG01.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg01");
+    //        MG01.setProperty("jdbc.user", "xxx");
+    //        MG01.setProperty("jdbc.password", "xxx");
+    //
+    //        CS15 = new Properties();
+    //        CS15.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+    //        CS15.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg15");
+    //        CS15.setProperty("jdbc.user", "xxx");
+    //        CS15.setProperty("jdbc.password", "xxx");
+    //    }
 
     /**
      * Getter method for property <tt>ETF</tt>.
@@ -48,6 +85,7 @@ public class DBProperties {
      */
     public Properties getETF() {
         return ETF;
+
     }
 
     /**
@@ -111,4 +149,5 @@ public class DBProperties {
      */
     public void setDATACENTER(Properties DATACENTER) {
         this.DATACENTER = DATACENTER;
-    }}
+    }
+}

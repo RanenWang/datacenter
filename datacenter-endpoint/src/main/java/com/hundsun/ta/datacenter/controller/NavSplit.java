@@ -7,6 +7,8 @@ package com.hundsun.ta.datacenter.controller;
 
 import com.alibaba.common.lang.StringUtil;
 import com.alipay.rdf.file.interfaces.FileFactory;
+import com.hundsun.ta.datacenter.daointerface.ETFSaleStatDOMapper;
+import com.hundsun.ta.datacenter.dataobject.ETFSaleStatDO;
 import com.hundsun.ta.datacenter.dataobject.NavSplitFundDO;
 import com.hundsun.ta.datacenter.dataobject.SystemParameterDO;
 import com.hundsun.ta.datacenter.enums.ResultStatusEnum;
@@ -16,7 +18,13 @@ import com.hundsun.ta.datacenter.enums.SystemParamterItemEnum;
 import com.hundsun.ta.datacenter.model.RequestResult;
 import com.hundsun.ta.datacenter.service.SystemParameterService;
 import com.hundsun.ta.datacenter.service.impl.SystemParameterServiceImpl;
+import com.hundsun.ta.datacenter.utils.ContextUtil;
+import com.hundsun.ta.datacenter.utils.DBProperties;
 import com.hundsun.ta.datacenter.utils.DESUtil;
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.task.TaskExecutorBuilder;
 import org.springframework.stereotype.Controller;
@@ -30,11 +38,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * @author wangpeng17355
@@ -135,6 +145,50 @@ public class NavSplit {
         requestResult.setMessage("拆分成功！！");
         return requestResult;
     }
+
+    /**
+     * 测试类
+     *
+     * @return the request result
+     * @throws IOException the io exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/get", produces = { "application/json;charset=UTF-8" })
+    public RequestResult split1() throws IOException {
+        RequestResult requestResult = new RequestResult();
+        InputStream stream = Resources.getResourceAsStream("META-INF/Configuration.xml");
+        DBProperties dbProperties = new DBProperties();
+        Properties ETFProperties = new Properties();
+
+        ETFProperties.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+        ETFProperties.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.74.170:1521/ora11g");
+        ETFProperties.setProperty("jdbc.user", "fkfta");
+        ETFProperties.setProperty("jdbc.password", "fkfta");
+        dbProperties.setETF(ETFProperties);
+        DBProperties dbProperties1 =  ContextUtil.getBean(DBProperties.class);
+
+        // 通过配置信息构建一个SQLSessionFactory
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(stream,
+                dbProperties.ETF);
+        // 通过sqlSessionFactory打开一个数据库会话
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        ETFSaleStatDOMapper etfSaleStatDOMapper =  sqlSession.getMapper(ETFSaleStatDOMapper.class);
+        List<ETFSaleStatDO> etfSaleStatDOS =  etfSaleStatDOMapper.selectAllData();
+        int a = 0;
+        // step1: 直接取数据库路径
+        String filePath = systemParameterService.getNavPath(SystemParamterItemEnum.NAVPATH.getCode(),SystemParamterItemEnum.NAVNAME.getCode(),SystemParamterItemEnum.INCOMEDATE.getCode());
+        if (StringUtil.isBlank(filePath)){
+            requestResult.setStatus(ResultStatusEnum.FAIL.getCode());
+            requestResult.setMessage("【警告】行情路径获取失败！！");
+        }
+        else{
+            requestResult.setStatus(ResultStatusEnum.SUCCESS.getCode());
+            requestResult.setData(filePath);
+        }
+
+        return requestResult;
+    }
+
 
     /**
      * 拆分etf，ta4，瑜伽云TA
