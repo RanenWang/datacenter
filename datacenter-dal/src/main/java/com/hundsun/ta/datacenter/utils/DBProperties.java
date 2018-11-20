@@ -4,15 +4,12 @@
 package com.hundsun.ta.datacenter.utils;
 
 import com.hundsun.ta.datacenter.daointerface.DatabaseConfigDOMapper;
-import com.hundsun.ta.datacenter.daointerface.SystemParameterDOMapper;
 import com.hundsun.ta.datacenter.dataobject.DatabaseConfigDO;
-import com.sun.org.apache.xml.internal.security.Init;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.security.PublicKey;
 import java.util.List;
 import java.util.Properties;
 
@@ -42,7 +39,7 @@ public class DBProperties {
         this.RTTA = new Properties();
         this.DATACENTER = new Properties();
 
-      //  InitProperties();
+        //  InitProperties();
     }
 
     /**
@@ -55,46 +52,49 @@ public class DBProperties {
         //读取全部数据
         List<DatabaseConfigDO> databaseConfigDOSList = databaseConfigDOMapper.selectAllData();
         for (DatabaseConfigDO databaseConfigDO : databaseConfigDOSList) {
-            if (databaseConfigDO.getSystemType().equals(ETF_TYPE)) {
-                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
-                                                 + "/" + databaseConfigDO.getServerName());
-                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
-                this.ETF.setProperty("jdbc.password",
-                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
-            } else if (databaseConfigDO.getSystemType().equals(TA4_TYPE)) {
-                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
-                                                 + "/" + databaseConfigDO.getServerName());
-                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
-                this.ETF.setProperty("jdbc.password",
-                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
-            } else if (databaseConfigDO.getSystemType().equals(RTTA_TYPE)) {
-                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
-                                                 + "/" + databaseConfigDO.getServerName());
-                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
-                this.ETF.setProperty("jdbc.password",
-                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
-            } else if (databaseConfigDO.getSystemType().equals(DATACENTER_TYPE)) {
-                this.ETF.setProperty("jdbc.driver", "com.mysql.jdbc.Driver");
-                this.ETF.setProperty("jdbc.url", "jdbc:mysql://" + databaseConfigDO.getIp() + "/"
-                                                 + databaseConfigDO.getServerName());
-                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
-                this.ETF.setProperty("jdbc.password",
-                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
-            } else {
-                Throwable throwable = new Throwable("未知系统类型");
-            }
+            if (!StringUtils.isEmpty(databaseConfigDO.getIp())
+                && !StringUtils.isEmpty(databaseConfigDO.getServerName())
+                && !StringUtils.isEmpty(databaseConfigDO.getUserName()))
+                if (ETF_TYPE.equals(databaseConfigDO.getSystemType())) {
+                    this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                    this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                     + "/" + databaseConfigDO.getServerName());
+                    this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                    this.ETF.setProperty("jdbc.password",
+                        DESUtil.decrypt(databaseConfigDO.getPassWord()));
+                } else if (TA4_TYPE.equals(databaseConfigDO.getSystemType())) {
+                    this.TA4.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                    this.TA4.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                     + "/" + databaseConfigDO.getServerName());
+                    this.TA4.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                    this.TA4.setProperty("jdbc.password",
+                        DESUtil.decrypt(databaseConfigDO.getPassWord()));
+                } else if (RTTA_TYPE.equals(databaseConfigDO.getSystemType())) {
+                    this.RTTA.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                    this.RTTA.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                     + "/" + databaseConfigDO.getServerName());
+                    this.RTTA.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                    this.RTTA.setProperty("jdbc.password",
+                        DESUtil.decrypt(databaseConfigDO.getPassWord()));
+                } else if (DATACENTER_TYPE.equals(databaseConfigDO.getSystemType())) {
+                    this.DATACENTER.setProperty("jdbc.driver", "com.mysql.jdbc.Driver");
+                    this.DATACENTER.setProperty("jdbc.url", "jdbc:mysql://" + databaseConfigDO.getIp()
+                                                     + "/" + databaseConfigDO.getServerName());
+                    this.DATACENTER.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                    this.DATACENTER.setProperty("jdbc.password",
+                        DESUtil.decrypt(databaseConfigDO.getPassWord()));
+                } else {
+                    Throwable throwable = new Throwable("未知系统类型");
+                }
         }
         return 0;
     }
 
-//    public static void main(String[] args) throws Exception {
-//        DESUtil.encrypt("616455481wp");
-//        //5JOO7F9Rq3HBd/jviLZHfw==
-//        return;
-//    }
+    //    public static void main(String[] args) throws Exception {
+    //        DESUtil.encrypt("616455481wp");
+    //        //5JOO7F9Rq3HBd/jviLZHfw==
+    //        return;
+    //    }
 
     /**
      * Getter method for property <tt>ETF</tt>.

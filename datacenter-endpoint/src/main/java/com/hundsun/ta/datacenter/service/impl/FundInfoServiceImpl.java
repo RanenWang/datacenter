@@ -4,6 +4,8 @@
 package com.hundsun.ta.datacenter.service.impl;
 
 import com.hundsun.ta.datacenter.daointerface.ETFFundInfoDOMapper;
+import com.hundsun.ta.datacenter.daointerface.RttaFundInfoDOMapper;
+import com.hundsun.ta.datacenter.daointerface.TA4FundInfoDOMapper;
 import com.hundsun.ta.datacenter.dataobject.FundCodeDO;
 import com.hundsun.ta.datacenter.service.FundInfoService;
 import com.hundsun.ta.datacenter.utils.DBProperties;
@@ -36,7 +38,7 @@ public class FundInfoServiceImpl implements FundInfoService {
     @Override public List<FundCodeDO> getEtfFundCodeList() throws Exception {
         //DBProperties dbProperties = new DBProperties();
         dbProperties.InitProperties();
-        SqlSession sqlSession = DataBaseUtil.getSqlSession(DBProperties.ETF);
+        SqlSession sqlSession = DataBaseUtil.getSqlSession(dbProperties.ETF);
         ETFFundInfoDOMapper etfFundInfoDOMapper = sqlSession.getMapper(ETFFundInfoDOMapper.class);
         return  etfFundInfoDOMapper.getAllFundCode();
     }
@@ -47,9 +49,9 @@ public class FundInfoServiceImpl implements FundInfoService {
      */
     @Override public List<FundCodeDO> getTa4FundCodeList()  throws Exception {
         dbProperties.InitProperties();
-        SqlSession sqlSession = DataBaseUtil.getSqlSession(DBProperties.TA4);
-        ETFFundInfoDOMapper etfFundInfoDOMapper = sqlSession.getMapper(ETFFundInfoDOMapper.class);
-        return  etfFundInfoDOMapper.getAllFundCode();
+        SqlSession sqlSession = DataBaseUtil.getSqlSession(dbProperties.TA4);
+        TA4FundInfoDOMapper ta4FundInfoDOMapper = sqlSession.getMapper(TA4FundInfoDOMapper.class);
+        return  ta4FundInfoDOMapper.getAllFundCode();
     }
 
     /**
@@ -57,6 +59,10 @@ public class FundInfoServiceImpl implements FundInfoService {
      * @return
      */
     @Override public List<FundCodeDO> getRttaFundCodeList()  throws Exception {
-        return null;
+
+        dbProperties.InitProperties();
+        SqlSession sqlSession = DataBaseUtil.getSqlSession(dbProperties.RTTA);
+        RttaFundInfoDOMapper rttaFundInfoDOMapper = sqlSession.getMapper(RttaFundInfoDOMapper.class);
+        return  rttaFundInfoDOMapper.getAllFundCode();
     }
 }

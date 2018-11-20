@@ -4,6 +4,7 @@
 package com.hundsun.ta.datacenter.enums;
 
 import com.alibaba.common.lang.StringUtil;
+import lombok.Data;
 
 /**
  * @author wangpeng17355
@@ -11,8 +12,8 @@ import com.alibaba.common.lang.StringUtil;
  */
 public enum  ResultStatusEnum {
 
-    SUCCESS("SUCCESS","成功"),
-    FAIL("FAIL","失败");
+    SUCCESS("SUCCESS","成功"),//成功
+    FAIL("FAIL","失败");//失败
 
     String code;
     String desc;
@@ -35,7 +36,7 @@ public enum  ResultStatusEnum {
             ResultStatusEnum[] var1 = values();
             int var2 = var1.length;
 
-            for(int var3 = 0; var3 < var2; ++var3) {
+            for (int var3 = 0; var3 < var2; ++var3) {
                 ResultStatusEnum item = var1[var3];
                 if (StringUtil.equals(item.getCode(), code)) {
                     return item;
@@ -45,10 +46,6 @@ public enum  ResultStatusEnum {
             return null;
         }
     }
-
-
-
-
     /**
      * Getter method for property <tt>desc</tt>.
      *

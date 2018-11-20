@@ -5,11 +5,13 @@ package com.hundsun.ta.datacenter.model;
 
 import com.alibaba.common.lang.enumeration.Enum;
 import com.hundsun.ta.datacenter.enums.ResultStatusEnum;
+import lombok.Data;
 
 /**
  * @author wangpeng17355
  * @version $Id: RequestResult, v0.1 2018年11月17日 10:48 AM wangpeng17355 Exp $
  */
+@Data
 public class RequestResult {
 
     String status;

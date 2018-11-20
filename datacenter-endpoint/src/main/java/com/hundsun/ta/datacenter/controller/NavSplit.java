@@ -2,12 +2,16 @@ package com.hundsun.ta.datacenter.controller;
 
 import com.alibaba.common.lang.StringUtil;
 import com.hundsun.ta.datacenter.dataobject.FundCodeDO;
+import com.hundsun.ta.datacenter.dataobject.NavSplitFundDO;
 import com.hundsun.ta.datacenter.enums.ResultStatusEnum;
 import com.hundsun.ta.datacenter.enums.SystemParamterItemEnum;
 import com.hundsun.ta.datacenter.model.RequestResult;
 import com.hundsun.ta.datacenter.service.FundInfoService;
+import com.hundsun.ta.datacenter.service.NavSplitFundService;
 import com.hundsun.ta.datacenter.service.SystemParameterService;
 import com.hundsun.ta.datacenter.utils.DESUtil;
+import lombok.Cleanup;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,7 @@ import java.util.*;
  * @author wangpeng17355
  * @version $Id: SystemParamterController, v0.1 2018年11月15日 5:40 PM wangpeng17355 Exp $
  */
+
 @Controller
 @RequestMapping(value = "/split")
 public class NavSplit {
@@ -31,10 +36,13 @@ public class NavSplit {
     @Autowired
     FundInfoService        fundInfoService;
 
+    @Autowired
+    NavSplitFundService navSplitFundService;
+
     /**
      * 获取nav路径
-     * @return the request result
-     * @throws IOException the io exception
+     * @return 返回结果集
+     * @throws IOException IO异常
      */
     @ResponseBody
     @RequestMapping(value = "/getnavpath", produces = { "application/json;charset=UTF-8" })
@@ -51,6 +59,7 @@ public class NavSplit {
             requestResult.setStatus(ResultStatusEnum.SUCCESS.getCode());
             requestResult.setData(filePath);
         }
+
         return requestResult;
     }
 
@@ -100,7 +109,7 @@ public class NavSplit {
                 break;
             case "ETFANDTA4ANDRTTA":
                 //etf、ta4、实时TA
-                SplitEtfAndTa4AndRtta(filePath, etfPath, ta4Path, rttaPath);
+                splitEtfAndTa4AndRtta(filePath, etfPath, ta4Path, rttaPath);
                 break;
             default:
                 break;
@@ -125,23 +134,19 @@ public class NavSplit {
         // 【TA4基金列表】
         // 【分TA基金列表】
         // 【瑜伽需要拆分的TA列表】
-        List<FundCodeDO> ta4FundCodeList = new ArrayList<>(100);
-        List<FundCodeDO> etfFundCodeList = new ArrayList<>(100);
-        List<FundCodeDO> rttaFundCodeList = new ArrayList<>(100);
-
-        etfFundCodeList = fundInfoService.getEtfFundCodeList();
-        ta4FundCodeList = fundInfoService.getTa4FundCodeList();
-        rttaFundCodeList = fundInfoService.getRttaFundCodeList();
+        List<FundCodeDO> etfFundCodeList = fundInfoService.getEtfFundCodeList();
+        List<FundCodeDO> ta4FundCodeList = fundInfoService.getTa4FundCodeList();
+        List<NavSplitFundDO> navSplitFundDOSList =  navSplitFundService.selectAllData();
 
         // step 2 :获取nav文件buffer对象。
-        BufferedReader navReader = new BufferedReader(
+        @Cleanup BufferedReader navReader = new BufferedReader(
             new InputStreamReader(new FileInputStream(new File(filePath)), "GBK"));
         // TODO: 2018/11/17 step2: 获取拆分表数据 nav_split_fund
         // TODO: 2018/11/17 step3: 获取是否三系统拆分标记
         // TODO: 2018/11/17 step4: 连接获取分TA基金列表
         // TODO: 2018/11/17 step5: 获取TA4基金列表
         // TODO: 2018/11/17 step6: 获取实时TA基金列表
-        // TODO: 2018/11/17
+
 
         String line = navReader.readLine();
         String result = "";
@@ -192,7 +197,7 @@ public class NavSplit {
      * @param ta4Path
      * @param rttaPath
      */
-    private void SplitEtfAndTa4AndRtta(String filePath, String etfPath, String ta4Path,
+    private void splitEtfAndTa4AndRtta(String filePath, String etfPath, String ta4Path,
                                        String rttaPath) {
 
     }

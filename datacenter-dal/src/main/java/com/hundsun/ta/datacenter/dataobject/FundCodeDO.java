@@ -3,13 +3,15 @@
  */
 package com.hundsun.ta.datacenter.dataobject;
 
+
 /**
  * @author wangpeng17355
  * @version $Id: FundCodeDO, v0.1 2018年11月19日 5:37 PM wangpeng17355 Exp $
  */
 public class FundCodeDO {
-   private String fundCode;
-   private String fundName;
+
+    private String fundCode;
+    private String fundName;
 
     /**
      * Getter method for property <tt>fundCode</tt>.
@@ -45,4 +47,6 @@ public class FundCodeDO {
      */
     public void setFundName(String fundName) {
         this.fundName = fundName;
-    }}
+    }
+}
+

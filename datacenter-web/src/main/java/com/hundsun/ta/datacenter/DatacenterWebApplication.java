@@ -6,11 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.util.Arrays;
+
+import static java.lang.System.*;
 
 /**
  * 启动类
@@ -32,15 +33,14 @@ public class DatacenterWebApplication {
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
 
-            System.out.println("注入如下Bean:");
+            out.println("注入如下Bean:");
 
             String[] beanNames = ctx.getBeanDefinitionNames();
             Arrays.sort(beanNames);
             for (String beanName : beanNames) {
-                System.out.println(beanName);
+                out.println(beanName);
             }
-            System.out.println("结束注入……");
-
+            out.println("结束注入……");
         };
     }
 

@@ -1,5 +1,6 @@
 package com.hundsun.ta.datacenter.dataobject;
 
+
 import java.math.BigDecimal;
 import java.util.Date;
 
