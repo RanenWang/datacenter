@@ -8,6 +8,7 @@ import com.hundsun.ta.datacenter.daointerface.SystemParameterDOMapper;
 import com.hundsun.ta.datacenter.dataobject.DatabaseConfigDO;
 import com.sun.org.apache.xml.internal.security.Init;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -19,8 +20,10 @@ import java.util.Properties;
  * @author wangpeng17355
  * @version $Id: DBProperties, v0.1 2018年11月17日 2:57 PM wangpeng17355 Exp $
  */
+@Configuration
 @Component
 public class DBProperties {
+
     @Autowired
     private DatabaseConfigDOMapper databaseConfigDOMapper;
 
@@ -28,55 +31,70 @@ public class DBProperties {
     public static Properties       TA4;
     public static Properties       RTTA;
     public static Properties       DATACENTER;
-    public static final String ETF_TYPE = "ETF";
-    public static final String TA4_TYPE = "TA4";
-    public static final String RTTA_TYPE = "RTTA";
-    public static final String DATACENTER_TYPE = "DATACENTER";
+    public static final String     ETF_TYPE        = "ETF";
+    public static final String     TA4_TYPE        = "TA4";
+    public static final String     RTTA_TYPE       = "RTTA";
+    public static final String     DATACENTER_TYPE = "DATACENTER";
 
-    public DBProperties() {
+    public DBProperties() throws Exception {
         this.ETF = new Properties();
         this.TA4 = new Properties();
         this.RTTA = new Properties();
         this.DATACENTER = new Properties();
+
+      //  InitProperties();
     }
 
     /**
+    /**
      * 初始化数据库配置信息
+     * 连接数据库读取全部数据库配置信息
      * @return
      */
-    public int InitProperties(){
+    public int InitProperties() throws Exception {
         //读取全部数据
         List<DatabaseConfigDO> databaseConfigDOSList = databaseConfigDOMapper.selectAllData();
-        for(DatabaseConfigDO databaseConfigDO : databaseConfigDOSList){
-            if (databaseConfigDO.getSystemType().equals(ETF_TYPE)){
-
-            }else if(databaseConfigDO.getSystemType().equals(TA4_TYPE)) {
-
-            }else if(databaseConfigDO.getSystemType().equals(RTTA_TYPE)) {
-
-            }else if(databaseConfigDO.getSystemType().equals(DATACENTER_TYPE)) {
-
-            }else{
+        for (DatabaseConfigDO databaseConfigDO : databaseConfigDOSList) {
+            if (databaseConfigDO.getSystemType().equals(ETF_TYPE)) {
+                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                 + "/" + databaseConfigDO.getServerName());
+                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                this.ETF.setProperty("jdbc.password",
+                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
+            } else if (databaseConfigDO.getSystemType().equals(TA4_TYPE)) {
+                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                 + "/" + databaseConfigDO.getServerName());
+                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                this.ETF.setProperty("jdbc.password",
+                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
+            } else if (databaseConfigDO.getSystemType().equals(RTTA_TYPE)) {
+                this.ETF.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
+                this.ETF.setProperty("jdbc.url", "jdbc:oracle:thin:@" + databaseConfigDO.getIp()
+                                                 + "/" + databaseConfigDO.getServerName());
+                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                this.ETF.setProperty("jdbc.password",
+                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
+            } else if (databaseConfigDO.getSystemType().equals(DATACENTER_TYPE)) {
+                this.ETF.setProperty("jdbc.driver", "com.mysql.jdbc.Driver");
+                this.ETF.setProperty("jdbc.url", "jdbc:mysql://" + databaseConfigDO.getIp() + "/"
+                                                 + databaseConfigDO.getServerName());
+                this.ETF.setProperty("jdbc.user", databaseConfigDO.getUserName());
+                this.ETF.setProperty("jdbc.password",
+                    DESUtil.decrypt(databaseConfigDO.getPassWord()));
+            } else {
                 Throwable throwable = new Throwable("未知系统类型");
             }
         }
         return 0;
     }
 
-    //    static{
-    //
-    //        MG01 = new Properties();
-    //        MG01.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-    //        MG01.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg01");
-    //        MG01.setProperty("jdbc.user", "xxx");
-    //        MG01.setProperty("jdbc.password", "xxx");
-    //
-    //        CS15 = new Properties();
-    //        CS15.setProperty("jdbc.driver", "oracle.jdbc.driver.OracleDriver");
-    //        CS15.setProperty("jdbc.url", "jdbc:oracle:thin:@192.168.0.0:1521/mg15");
-    //        CS15.setProperty("jdbc.user", "xxx");
-    //        CS15.setProperty("jdbc.password", "xxx");
-    //    }
+//    public static void main(String[] args) throws Exception {
+//        DESUtil.encrypt("616455481wp");
+//        //5JOO7F9Rq3HBd/jviLZHfw==
+//        return;
+//    }
 
     /**
      * Getter method for property <tt>ETF</tt>.

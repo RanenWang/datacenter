@@ -1,6 +1,9 @@
 package com.hundsun.ta.datacenter.daointerface;
 
 import com.hundsun.ta.datacenter.dataobject.ETFFundInfoDO;
+import com.hundsun.ta.datacenter.dataobject.FundCodeDO;
+
+import java.util.List;
 
 public interface ETFFundInfoDOMapper {
     /**
@@ -18,4 +21,10 @@ public interface ETFFundInfoDOMapper {
      * @mbggenerated
      */
     int insertSelective(ETFFundInfoDO record);
+
+    /**
+     * 获取etf所有基金列表
+     * @return
+     */
+    List<FundCodeDO> getAllFundCode();
 }

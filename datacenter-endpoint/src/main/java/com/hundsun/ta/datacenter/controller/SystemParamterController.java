@@ -18,7 +18,7 @@ import java.util.Date;
  * @version $Id: SystemParamterController, v0.1 2018年11月15日 5:40 PM wangpeng17355 Exp $
  */
 @Controller
-@RequestMapping(value = "/sys")
+@RequestMapping(value = "/system")
 public class SystemParamterController{
 
     @Autowired
@@ -27,20 +27,9 @@ public class SystemParamterController{
     NavSplitFundService navSplitFundService;
 
     @ResponseBody
-    @RequestMapping(value = "/get", produces = {"application/json;charset=UTF-8"})
-    public String getsys(){
-
-       // return  navSplitFundService.selectAllData().toString();
-        NavSplitFundDO navSplitFundDO = new NavSplitFundDO();
-        navSplitFundDO.setFundCode("111111");
-        navSplitFundDO.setGmtCreate(new Date());
-        navSplitFundDO.setGmtModified(new Date());
-        navSplitFundDO.setId(12);
-        navSplitFundDO.setSplitType(SplitTypeEnum.ETFANDTA4.getCode());
-        navSplitFundDO.setSubFundCode("213123");
-
-        navSplitFundService.insert(navSplitFundDO);
-        return  systemParameterService.selectByPrimaryKey(1).getClassName();
+    @RequestMapping(value = "/getbykey", produces = {"application/json;charset=UTF-8"})
+    public SystemParameterDO getsys(){
+        return  systemParameterService.selectByPrimaryKey(1);
 
     }
     @ResponseBody

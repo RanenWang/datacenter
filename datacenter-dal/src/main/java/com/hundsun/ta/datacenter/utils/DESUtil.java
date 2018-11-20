@@ -22,7 +22,7 @@ public class DESUtil {
     /**
      * 默认key
      */
-    private final static String defaultKey = "datacenter";
+    private final static String DEFFULTKEY = "datacenter";
 
     /**
      * 使用默认key加密
@@ -31,7 +31,7 @@ public class DESUtil {
      * @throws Exception
      */
     public static String encrypt(String data) throws Exception {
-        byte[] bt = encrypt(data.getBytes(ENCODE), defaultKey.getBytes(ENCODE));
+        byte[] bt = encrypt(data.getBytes(ENCODE), DEFFULTKEY.getBytes(ENCODE));
         String strs = new BASE64Encoder().encode(bt);
         return strs;
     }
@@ -50,7 +50,7 @@ public class DESUtil {
         }
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] buf = decoder.decodeBuffer(data);
-        byte[] bt = decrypt(buf, defaultKey.getBytes(ENCODE));
+        byte[] bt = decrypt(buf, DEFFULTKEY.getBytes(ENCODE));
         return new String(bt, ENCODE);
     }
 
@@ -64,7 +64,7 @@ public class DESUtil {
      * @throws Exception
      */
     public static String encrypt(String data, String key) throws Exception {
-        byte[] bt = encrypt(data.getBytes(ENCODE), defaultKey.getBytes(ENCODE));
+        byte[] bt = encrypt(data.getBytes(ENCODE), DEFFULTKEY.getBytes(ENCODE));
         String strs = new BASE64Encoder().encode(bt);
         return strs;
     }
@@ -81,8 +81,9 @@ public class DESUtil {
      */
     public static String decrypt(String data, String key) throws IOException,
                                                                  Exception {
-        if (data == null)
+        if (data == null){
             return null;
+        }
         BASE64Decoder decoder = new BASE64Decoder();
         byte[] buf = decoder.decodeBuffer(data);
         byte[] bt = decrypt(buf, key.getBytes(ENCODE));

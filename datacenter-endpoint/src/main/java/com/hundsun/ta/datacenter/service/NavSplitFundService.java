@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface NavSplitFundService {
 
-    int insert(NavSplitFundDO navSplitFundDO);
+    int insert(NavSplitFundDO navSplitFundDO) throws Exception;
 
     List<NavSplitFundDO> selectAllData();
 

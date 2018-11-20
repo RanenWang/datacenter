@@ -39,10 +39,12 @@ public class NavSplitFundController {
         navSplitFundDO.setSplitType(SplitTypeEnum.ETFANDTA4.getCode());
         navSplitFundDO.setSubFundCode("213123");
         try{
-            if(navSplitFundService.insert(navSplitFundDO) == SUCCESS)
+            if(SUCCESS == navSplitFundService.insert(navSplitFundDO)){
                 result = "SUCCESS";
-            else
+            }
+            else{
                 result = "FAIL";
+            }
         }
         catch (Exception e)
         {

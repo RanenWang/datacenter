@@ -24,6 +24,11 @@
         <!--<mapper resource="dao/*" />-->
         <mapper resource="dao/ETFFundInfoDOMapper.xml" />
         <mapper resource="dao/ETFSaleStatDOMapper.xml" />
+      <!--  <mapper resource="dao/TA4SaleStatDOMapper.xml" />
+        <mapper resource="dao/TA4SaleStatDOMapper.xml" />-->
+        <mapper resource="dao/DatabaseConfigDOMapper.xml" />
+        <mapper resource="dao/NavSplitFundDOMapper.xml" />
+        <mapper resource="dao/SystemParameterDOMapper.xml" />
 
     </mappers>
 </configuration>
