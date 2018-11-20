@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
 package com.hundsun.ta.datacenter.service.impl;
 
 import com.hundsun.ta.datacenter.daointerface.NavSplitFundDOMapper;
@@ -22,18 +18,23 @@ public class NavSplitFundServiceImpl implements NavSplitFundService {
     @Autowired
     private NavSplitFundDOMapper navSplitFundDOMapper;
 
-    @Override public int insert(NavSplitFundDO navSplitFundDO) {
+    /**
+     * Insert int.
+     *
+     * @param navSplitFundDO the nav split fund do
+     * @return the int
+     */
+    @Override public int insert(NavSplitFundDO navSplitFundDO) throws Exception{
        int result = 1;
-       try {
-           result = navSplitFundDOMapper.insert(navSplitFundDO);
-       }catch (Exception e)
-       {
-           throw e;
-       }
+       result = navSplitFundDOMapper.insert(navSplitFundDO);
        return result ;
-
     }
 
+    /**
+     * Select all data list.
+     *
+     * @return the list
+     */
     @Override public List<NavSplitFundDO> selectAllData() {
 
       return   navSplitFundDOMapper.selectAllData();

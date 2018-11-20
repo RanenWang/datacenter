@@ -1,7 +1,4 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
+
 package com.hundsun.ta.datacenter.service;
 
 import com.hundsun.ta.datacenter.dataobject.SystemParameterDO;
@@ -46,5 +43,11 @@ public interface SystemParameterService {
      * @return
      */
     String getNavRestPath(String path,String name,String date);
+
+    /**
+     * 获取系统拆分参数
+     * @return
+     */
+    String getSplitType();
 
 }

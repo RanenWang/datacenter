@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
 package com.hundsun.ta.datacenter.enums;
 
 /**
@@ -15,7 +11,8 @@ public enum SystemParamterItemEnum {
     TACODE("TACODE", "TA代码"),
     NAVPATH("NAVPATH","行情路径"),
     INCOMEDATE("INCOMEDATE","收益日期"),
-    NAVNAME("NAVNAME","工作日行情文件前缀");
+    NAVNAME("NAVNAME","工作日行情文件前缀"),
+    SPLITTYPE("SPLITTYPE","拆分类型");
 
     String code;
     String desc;

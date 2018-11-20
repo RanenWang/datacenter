@@ -1,7 +1,3 @@
-/**
- * Alipay.com Inc.
- * Copyright (c) 2004-2018 All Rights Reserved.
- */
 package com.hundsun.ta.datacenter.service.impl;
 
 import com.hundsun.ta.datacenter.daointerface.SystemParameterDOMapper;
@@ -77,5 +73,17 @@ public class SystemParameterServiceImpl implements SystemParameterService {
         systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
         filePath += systemParameterDOSList.get(0).getParamValue();
         return filePath;    }
+
+    /**
+     * 获取拆分类型
+     * @return
+     */
+    @Override public String getSplitType() {
+        SystemParameterDO systemParameterRequest = new SystemParameterDO();
+        systemParameterRequest.setClassName(SystemParamterClassEnum.PARAMTER.getCode());
+        systemParameterRequest.setItem(SystemParamterItemEnum.SPLITTYPE.getCode());
+        List<SystemParameterDO> systemParameterDOSList = systemParameterDOMapper.selectByClassAndItem(systemParameterRequest);
+        return systemParameterDOSList.get(0).getParamValue();
+    }
 
 }
